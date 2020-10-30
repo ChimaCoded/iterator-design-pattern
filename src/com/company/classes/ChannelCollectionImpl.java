@@ -1,19 +1,23 @@
-package com.company;
+package com.company.classes;
+import com.company.enumerator.ChannelTypeEnum;
+import com.company.interfaces.ChannelCollection;
+import com.company.interfaces.ChannelIterator;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class ChannelCollectionImpl implements ChannelCollection {
-
-    private List<Channel> channelsList;
-
+//      data structure for holding a collection of channels.
+    private final List<Channel> channelsList;
+//      class constructor
     public ChannelCollectionImpl() {
         channelsList = new ArrayList<>();
     }
-
+//      implementation of the addChannel method
     public void addChannel(Channel c) {
         this.channelsList.add(c);
     }
-
+//      implementation of the removeChannel method
     public void removeChannel(Channel c) {
         this.channelsList.remove(c);
     }
@@ -23,14 +27,17 @@ public class ChannelCollectionImpl implements ChannelCollection {
         return new ChannelIteratorImpl(type, this.channelsList);
     }
 
-    private class ChannelIteratorImpl implements ChannelIterator {
-
-        private ChannelTypeEnum type;
-        private List<Channel> channels;
+//    creation of
+//    static (implementation is exclusive to the class, not to a particular object)
+//    inner class.
+    private static class ChannelIteratorImpl implements ChannelIterator {
+//          member variables
+        private final ChannelTypeEnum type;
+        private final List<Channel> channels;
         private int position;
 
-        public ChannelIteratorImpl(ChannelTypeEnum ty,
-                                   List<Channel> channelsList) {
+//          class constructor
+        public ChannelIteratorImpl(ChannelTypeEnum ty, List<Channel> channelsList) {
             this.type = ty;
             this.channels = channelsList;
         }

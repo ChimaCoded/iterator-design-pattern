@@ -1,9 +1,11 @@
-package com.company;
+package com.company.classes;
+
+import com.company.enumerator.ChannelTypeEnum;
 
 public class Channel {
 //      class members
-    private double frequency;
-    private ChannelTypeEnum TYPE;
+    private final double frequency;
+    private final ChannelTypeEnum TYPE;
 
 //      constructor
     public Channel(double freq, ChannelTypeEnum type){
